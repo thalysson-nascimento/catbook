@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,9 +6,7 @@ import { Injectable } from '@angular/core';
 export class BaseUrlService {
   baseUrl: string = 'http://localhost:3000';
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
 
   path(path: string){
     return `${this.baseUrl}${path}`;
