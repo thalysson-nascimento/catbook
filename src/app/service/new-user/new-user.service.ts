@@ -1,8 +1,9 @@
-import { BaseUrlService } from './../base-url/base-url.service';
-import { NewUser } from './new-user.d';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { NewUser } from './new-user.d';
+import { BaseUrlService } from './../base-url/base-url.service';
 
 @Injectable({
   providedIn: 'root'
