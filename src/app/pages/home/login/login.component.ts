@@ -1,6 +1,6 @@
-import { AuthService } from './../../../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../service/auth/auth.service';
 
 type HttpHeaders = {
   normalizedNames: any;
@@ -56,5 +56,9 @@ export class LoginComponent implements OnInit {
         console.log('serviço indisponível');
       }
     });
+  }
+
+  newUser() {
+    this.router.navigateByUrl('home/new-user');
   }
 }

@@ -1,3 +1,4 @@
+import { NewUserComponent } from './new-user/new-user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: '',
         component: LoginComponent
+      },
+      {
+        path: 'new-user',
+        component: NewUserComponent,
       }
     ]
   },
