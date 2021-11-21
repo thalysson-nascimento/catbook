@@ -1,27 +1,45 @@
 <h4 class="text-center">Seja bem vindo, e commpartilhe comm todos o seu pat para doação :)</h4>
 
-<form class="form mt-4">
+<form class="form mt-4" [formGroup]="createUser()">
   <div class="form-group">
-    <input class="form-control" placeholder="E-mail">
+    <input
+     class="form-control"
+     placeholder="E-mail"
+     name="email"
+     formControlName="email">
   </div>
   <br>
 
   <div class="form-group">
-    <input class="form-control" placeholder="Nome completo">
+    <input
+     class="form-control"
+     placeholder="Nome completo"
+     name="fullName"
+     formControlName="fullName">
   </div>
   <br>
 
   <div class="form-group">
-    <input class="form-control" placeholder="Nome de usuário">
+    <input
+     class="form-control"
+     placeholder="Nome de usuário"
+     name="userName"
+     formControlName="userName">
   </div>
   <br>
 
   <div class="form-group">
-    <input class="form-control" placeholder="Senha" type="password">
+    <input
+     class="form-control"
+     placeholder="Senha"
+     type="password"
+     name="password"
+     formControlName="password">
   </div>
   <br>
 
-  <button class="btn btn-primary btn-block">Cadastrar</button>
+  <button
+   class="btn btn-primary btn-block">Cadastrar</button>
 </form>
 <br>
 
