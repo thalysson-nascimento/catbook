@@ -1,45 +1,68 @@
 <h4 class="text-center">Seja bem vindo, e commpartilhe comm todos o seu pat para doação :)</h4>
 
-<form class="form mt-4" [formGroup]="createUser()">
+<form class="form mt-4" [formGroup]="newUserFormGroup" (submit)="createUser()">
   <div class="form-group">
-    <input
-     class="form-control"
-     placeholder="E-mail"
-     name="email"
-     formControlName="email">
+    <input class="form-control" id="email" placeholder="E-mail" name="email" formControlName="email">
+    <app-message
+      *ngIf="
+      newUserFormGroup.get('email')?.errors?.required &&
+      newUserFormGroup.get('email')?.touched"
+      text="O campo e-mail é obrigatório"
+      typeError="warning"
+    ></app-message>
+    <app-message
+      *ngIf="
+      newUserFormGroup.get('email')?.errors?.email &&
+      newUserFormGroup.get('email')?.touched"
+      text="Você deve preencher com um e-mail válido"
+      typeError="danger"
+    ></app-message>
   </div>
   <br>
 
   <div class="form-group">
-    <input
-     class="form-control"
-     placeholder="Nome completo"
-     name="fullName"
-     formControlName="fullName">
+    <input class="form-control" id="fullName" placeholder="Nome completo" name="fullName" formControlName="fullName">
+    <app-message
+      *ngIf="
+      newUserFormGroup.get('fullName')?.errors &&
+      newUserFormGroup.get('fullName')?.touched"
+      text="O campo nome completo é obrigatório"
+      typeError="warning"
+    ></app-message>
   </div>
   <br>
 
   <div class="form-group">
-    <input
-     class="form-control"
-     placeholder="Nome de usuário"
-     name="userName"
-     formControlName="userName">
+    <input class="form-control" id="userName" placeholder="Nome de usuário" name="userName" formControlName="userName">
+    <app-message
+      *ngIf="
+      newUserFormGroup.get('userName')?.errors?.minusculo &&
+      newUserFormGroup.get('userName')?.touched"
+      text="O campo nome de usuário deve ser minusculo"
+      typeError="warning"
+    ></app-message>
+    <app-message
+      *ngIf="
+      newUserFormGroup.get('userName')?.errors?.required &&
+      newUserFormGroup.get('userName')?.touched"
+      text="O campo nome de usuário é obrigatório"
+      typeError="warning"
+    ></app-message>
   </div>
   <br>
 
   <div class="form-group">
-    <input
-     class="form-control"
-     placeholder="Senha"
-     type="password"
-     name="password"
-     formControlName="password">
+    <input class="form-control" id="password" placeholder="Senha" type="password" name="password" formControlName="password">
+    <app-message
+      *ngIf="
+      newUserFormGroup.get('userName')?.touched"
+      text="O campo senha é obrigatório"
+      typeError="warning"
+    ></app-message>
   </div>
   <br>
 
-  <button
-   class="btn btn-primary btn-block">Cadastrar</button>
+  <button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
 </form>
 <br>
 
