@@ -18,4 +18,16 @@ export class NewUserService {
   addNewUser(newUser: NewUser): Observable<NewUser> {
     return this.httpClient.post<NewUser>(this.baseUrl.path('/user/signup'), newUser);
   }
+
+  verifyNewUserExisting(userName: string) {
+    return this.httpClient.get(
+      this.baseUrl.path(`/user/exists/${userName}`)
+    );
+  }
+
+  verifyEmailExisting(email: string) {
+    return this.httpClient.get(
+      this.baseUrl.path(`/user/exists/email/${email}`)
+    );
+  }
 }
