@@ -17,6 +17,12 @@
       text="Você deve preencher com um e-mail válido"
       typeError="danger"
     ></app-message>
+    <app-message
+      *ngIf="
+      newUserFormGroup.get('email')?.errors?.existEmail"
+      text="O email informado já existe, por favor tente outro email!"
+      typeError="danger"
+    ></app-message>
   </div>
   <br>
 
@@ -48,6 +54,12 @@
       text="O campo nome de usuário é obrigatório"
       typeError="warning"
     ></app-message>
+    <app-message
+      *ngIf="
+      newUserFormGroup.get('userName')?.errors?.existingUser"
+      text="O usuário informado já existe"
+      typeError="warning"
+    ></app-message>
   </div>
   <br>
 
@@ -55,9 +67,16 @@
     <input class="form-control" id="password" placeholder="Senha" type="password" name="password" formControlName="password">
     <app-message
       *ngIf="
-      newUserFormGroup.get('userName')?.touched"
+      newUserFormGroup.get('password')?.errors?.required &&
+      newUserFormGroup.get('password')?.touched"
       text="O campo senha é obrigatório"
       typeError="warning"
+    ></app-message>
+    <app-message
+      *ngIf="
+      newUserFormGroup.errors?.userNameAndPasswordAreSame"
+      text="A senha deve ser diferente do nome de usuário"
+      typeError="danger"
     ></app-message>
   </div>
   <br>
