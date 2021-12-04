@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Animals } from './../../../service/animals/animals.d';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Animals } from 'src/app/service/animals/animals';
 import { AnimalsService } from './../../../service/animals/animals.service';
 import { UserAuthService } from './../../../service/user/user-auth/user-auth.service';
 
@@ -10,7 +12,7 @@ import { UserAuthService } from './../../../service/user/user-auth/user-auth.ser
 })
 export class ListAnimalsComponent implements OnInit {
   @Input()
-  animals!: Animals;
+  animals$!: Observable<Animals>;
 
   constructor(
     private userService: UserAuthService,
@@ -18,11 +20,15 @@ export class ListAnimalsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe((user) => {
-      const userName = user.name ?? '';
-      this.animalsService.listUser(userName).subscribe((animals) => {
-        this.animals = animals;
-      });
-    });
+    this.animalList();
+  }
+
+  private animalList() {
+    this.animals$ = this.userService.getUser().pipe(
+      switchMap((user) => {
+        const userName = user.name ?? '';
+        return this.animalsService.listUser(userName);
+      })
+    );
   }
 }
