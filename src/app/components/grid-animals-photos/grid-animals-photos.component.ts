@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Animals } from './../../service/animals/animals.d';
 
-
 @Component({
   selector: 'app-grid-animals-photos',
   templateUrl: './grid-animals-photos.component.html',

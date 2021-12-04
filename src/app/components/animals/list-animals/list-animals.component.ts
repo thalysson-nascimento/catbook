@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Animals } from './../../../service/animals/animals.d';
 import { AnimalsService } from './../../../service/animals/animals.service';
-import { UserAuthService } from './../../../service/auth/user-auth/user-auth.service';
+import { UserAuthService } from './../../../service/user/user-auth/user-auth.service';
 
 @Component({
   selector: 'app-list-animals',

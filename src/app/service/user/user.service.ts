@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-
-import { Auth } from './auth';
-import { BaseUrlService } from './../base-url/base-url.service';
+import { BaseUrlService } from '../base-url/base-url.service';
+import { User } from './user';
 import { UserAuthService } from './user-auth/user-auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class UserService {
   constructor(
     private httpClient: HttpClient,
     private baseUrlservice: BaseUrlService,
@@ -18,7 +17,7 @@ export class AuthService {
   ) { }
 
   authenticated(userName: string, password: string): Observable<HttpResponse<any>> {
-    return this.httpClient.post<Auth>(
+    return this.httpClient.post<User>(
       this.baseUrlservice.path('/user/login'),
       {
         userName: userName,

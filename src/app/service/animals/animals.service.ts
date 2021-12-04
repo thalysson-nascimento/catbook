@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TokenService } from './../auth/token/token.service';
 import { BaseUrlService } from './../base-url/base-url.service';
+import { TokenService } from './../user/token/token.service';
 import { Animals } from './animals.d';
 
 @Injectable({
