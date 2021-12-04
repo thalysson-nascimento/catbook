@@ -13,10 +13,10 @@ export class LoginGuard implements CanLoad {
   ) {}
 
   canLoad(
-    route: Route,
-    segments: UrlSegment[]
+    _route: Route,
+    _segments: UrlSegment[]
   ): Observable<boolean | UrlTree> | boolean | UrlTree {
-    if (this.userAuthService.isLoged) {
+    if (this.userAuthService.isLoged()) {
       this.router.navigate(['/animals'])
       return false;
     }
