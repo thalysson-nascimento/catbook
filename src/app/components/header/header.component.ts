@@ -1,7 +1,6 @@
-import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-
-import { UserAuthService } from './../../service/auth/user-auth/user-auth.service';
+import { Router } from '@angular/router';
+import { UserAuthService } from './../../service/user/user-auth/user-auth.service';
 
 @Component({
   selector: 'app-header',

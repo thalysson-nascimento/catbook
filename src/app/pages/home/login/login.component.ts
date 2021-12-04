@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../service/auth/auth.service';
+import { UserService } from 'src/app/service/user/user.service';
 
 type HttpHeaders = {
   normalizedNames: any;
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   password = '';
 
   constructor(
-    private service: AuthService,
+    private service: UserService,
     private router: Router,
   ) { }
 
