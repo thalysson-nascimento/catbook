@@ -1,9 +1,12 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, mapTo } from 'rxjs/operators';
 import { BaseUrlService } from './../base-url/base-url.service';
 import { TokenService } from './../user/token/token.service';
-import { Animals } from './animals.d';
+import { Animal, Animals } from './animals.d';
+
+const NOT_MODIFFIED = '304';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +19,35 @@ export class AnimalsService {
   ) {}
 
   listUser(userName: string): Observable<Animals> {
-    const token = this.tokenService.returnJWTToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
-    return this.httpCliente.get<Animals>(this.baseUrlService.path(`/${userName}/photos`), {
-      headers
-    })
+    return this.httpCliente.get<Animals>(
+      this.baseUrlService.path(`/${userName}/photos`)
+    );
+  }
+
+  searchForId(id: number): Observable<Animal> {
+    return this.httpCliente.get<Animal>(
+      this.baseUrlService.path(`/photos/${id}`)
+    );
+  }
+
+  deleteAnimal(id: number): Observable<Animal> {
+    return this.httpCliente.delete<Animal>(
+      this.baseUrlService.path(`/photos/${id}`)
+    );
+  }
+
+  likeAnimal(id: number): Observable<boolean> {
+    return this.httpCliente
+      .post<Animal>(
+        this.baseUrlService.path(`/photos/${id}/like`),
+        {},
+        { observe: 'response' }
+      )
+      .pipe(
+        mapTo(true),
+        catchError((error) => {
+          return error.status === NOT_MODIFFIED ? of(false) : throwError(error);
+        })
+      );
   }
 }

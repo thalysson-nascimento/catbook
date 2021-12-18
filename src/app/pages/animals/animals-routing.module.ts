@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AnimalDetailsComponent } from './animal-details/animal-details.component';
 import { AnimalsComponent } from './animals.component';
 
 const routes: Routes = [
-  {path: '', component: AnimalsComponent}
+  {path: '', component: AnimalsComponent},
+  {path: ':animalId', component: AnimalDetailsComponent}
 ];
 
 @NgModule({

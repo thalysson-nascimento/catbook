@@ -4,6 +4,7 @@ import { AnimalComponent } from './../../components/animals/animal/animal.compon
 import { ListAnimalsComponent } from './../../components/animals/list-animals/list-animals.component';
 import { CardModule } from './../../components/card/card.module';
 import { GridAnimalsPhotosComponent } from './../../components/grid-animals-photos/grid-animals-photos.component';
+import { AnimalDetailsComponent } from './animal-details/animal-details.component';
 import { AnimalsRoutingModule } from './animals-routing.module';
 import { AnimalsComponent } from './animals.component';
 
@@ -13,6 +14,7 @@ import { AnimalsComponent } from './animals.component';
     AnimalsComponent,
     GridAnimalsPhotosComponent,
     ListAnimalsComponent,
+    AnimalDetailsComponent
   ],
   imports: [CommonModule, AnimalsRoutingModule, CardModule],
 })
