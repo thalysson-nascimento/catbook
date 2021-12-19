@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { Animals } from 'src/app/service/animals/animals';
-import { AnimalsService } from './../../../service/animals/animals.service';
-import { UserAuthService } from './../../../service/user/user-auth/user-auth.service';
 
 @Component({
   selector: 'app-list-animals',
@@ -12,23 +9,17 @@ import { UserAuthService } from './../../../service/user/user-auth/user-auth.ser
 })
 export class ListAnimalsComponent implements OnInit {
   @Input()
-  animals$!: Observable<Animals>;
+  animals!: Animals;
 
-  constructor(
-    private userService: UserAuthService,
-    private animalsService: AnimalsService
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.animalList();
   }
 
   private animalList() {
-    this.animals$ = this.userService.getUser().pipe(
-      switchMap((user) => {
-        const userName = user.name ?? '';
-        return this.animalsService.listUser(userName);
-      })
-    );
+    this.activatedRoute.params.subscribe((paramsListAnimal) => {
+      this.animals = this.activatedRoute.snapshot.data['animals']; // pegando o parâmetro 'animals' do resolver em animals.routing
+    });
   }
 }
