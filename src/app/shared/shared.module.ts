@@ -4,14 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 const baseModule = [
   ReactiveFormsModule,
-]
+];
 
 @NgModule({
   imports: [
-    CommonModule, baseModule
+    CommonModule, ...baseModule
   ],
   exports: [
-    baseModule
+    ...baseModule,
   ]
 })
 export class SharedModule { }

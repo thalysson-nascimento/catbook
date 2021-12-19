@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterModule } from './components/footer/footer.module';
 import { HeaderModule } from './components/header/header.module';
+import { MenuModule } from './components/menu/menu.module';
 import { AuthenticatedModule } from './service/user/user-auth/authenticated.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,7 +18,8 @@ import { AuthenticatedModule } from './service/user/user-auth/authenticated.modu
     HttpClientModule,
     HeaderModule,
     FooterModule,
-    AuthenticatedModule
+    AuthenticatedModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
