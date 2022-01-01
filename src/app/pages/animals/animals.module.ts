@@ -9,6 +9,7 @@ import { AnimalDetailsComponent } from './animal-details/animal-details.componen
 import { CommentsComponent } from './animal-details/comments/comments.component';
 import { AnimalsRoutingModule } from './animals-routing.module';
 import { AnimalsComponent } from './animals.component';
+import { NewAnimalComponent } from './new-animal/new-animal.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AnimalsComponent } from './animals.component';
     ListAnimalsComponent,
     AnimalDetailsComponent,
     CommentsComponent,
+    NewAnimalComponent,
   ],
   imports: [
     CommonModule,
