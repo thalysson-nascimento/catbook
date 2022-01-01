@@ -50,4 +50,18 @@ export class AnimalsService {
         })
       );
   }
+
+  uploudImageAnimal(
+    description: string,
+    allowComments: boolean,
+    file: File) {
+      const formData = new FormData();
+      formData.append('description', description);
+      formData.append('allowComments', allowComments ? 'true' : 'false');
+      formData.append('imageFile', file);
+
+      return this.httpCliente.post(this.baseUrlService.path(`/photos/upload`), formData, {
+        observe: 'events',
+      })
+    }
 }
