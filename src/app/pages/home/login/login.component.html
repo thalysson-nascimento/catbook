@@ -2,17 +2,22 @@
 <h4 class="text-center">Login</h4>
 
 <form class="form mt-4" (ngSubmit)="login()">
-  <div class="form-group">
-    <input name="user" class="form-control" placeholder="Nome do usuário" [(ngModel)]="user" />
-  </div>
+  <app-input
+    name="user"
+    placeholder="Nome do usuário"
+    [(value)]="user"
+    type="text"
+  ></app-input>
   <br>
-  <div class="form-group">
-    <input name="password" type="password" class="form-control" placeholder="Senha" [(ngModel)]="password" />
-  </div>
+  <app-input
+    name="password"
+    placeholder="Senha"
+    [type]="'password'"
+    [(value)]="password"
+  ></app-input>
   <br>
   <button type="submit" class="btn btn-primary btn-block">Login</button>
 </form>
-<br>
 
 <p>
   Ainda não é cadastrado? <a (click)="newUser()" style="color: cadetblue;">Faça seu cadastro aqui :)</a>
