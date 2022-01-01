@@ -1,0 +1,24 @@
+<br>
+<h4 class="text-center">Login</h4>
+
+<form class="form mt-4" (ngSubmit)="login()">
+  <app-input
+    name="user"
+    placeholder="Nome do usuário"
+    [(value)]="user"
+    type="text"
+  ></app-input>
+  <br>
+  <app-input
+    name="password"
+    placeholder="Senha"
+    [type]="'password'"
+    [(value)]="password"
+  ></app-input>
+  <br>
+  <button type="submit" class="btn btn-primary btn-block">Login</button>
+</form>
+
+<p>
+  Ainda não é cadastrado? <a (click)="newUser()" style="color: cadetblue;">Faça seu cadastro aqui :)</a>
+</p>
