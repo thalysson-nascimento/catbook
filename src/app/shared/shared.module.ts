@@ -2,16 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-const baseModule = [
-  ReactiveFormsModule,
-];
+const baseModule = [CommonModule, ReactiveFormsModule];
 
 @NgModule({
-  imports: [
-    CommonModule, ...baseModule
-  ],
-  exports: [
-    ...baseModule,
-  ]
+  imports: [...baseModule],
+  exports: [...baseModule],
 })
-export class SharedModule { }
+export class SharedModule {}
